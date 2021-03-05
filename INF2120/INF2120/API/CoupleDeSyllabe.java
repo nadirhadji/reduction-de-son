@@ -6,15 +6,31 @@ package INF2120.API;
  *
  * @see SyllabeFrancais
  */
-public class PaireSyllabe {
+public class CoupleDeSyllabe {
 
-    protected OccurenceSyllabe syllabe1;
+    /**
+     * La première syllabe du couple
+     */
+    protected NombreDeSyllabe syllabe1;
 
-    protected OccurenceSyllabe syllabe2;
+    /**
+     * La seconde syllabe du couple
+     */
+    protected NombreDeSyllabe syllabe2;
 
+    /**
+     * La distance entre la syllabe1 et la syllabe2
+     */
     protected int distance;
 
-    public PaireSyllabe(OccurenceSyllabe syllabe1,OccurenceSyllabe syllabe2) {
+    /**
+     * Construit un objet {@code CoupleDeSyllabe} avec deux syllabes
+     * et calcul leurs distance qui est un attribut de la classe.
+     *
+     * @param syllabe1 la premiére syllabe
+     * @param syllabe2 la deuxiéme syllabe
+     */
+    public CoupleDeSyllabe(NombreDeSyllabe syllabe1, NombreDeSyllabe syllabe2) {
         this.syllabe1 = syllabe1;
         this.syllabe2 = syllabe2;
         this.distance = calculerDistance();

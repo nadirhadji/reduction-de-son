@@ -5,18 +5,18 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 
 /**
- * Une classe pour contenir toute les {@code OccurenceSyllabe} : soit une copie
+ * Une classe pour contenir toute les {@code NombreDeSyllabe} : soit une copie
  * de chaque syllable differente dans un {@code TexteSonore} ainsi que le
  * nombre d'occurence dans celui-ci.
  *
- * @see OccurenceSonore
+ * @see ListeDeSyllabe
  * @see TexteSonore
  */
-public class OccurenceSonore extends ArrayList<OccurenceSyllabe> {
+public class ListeDeSyllabe extends ArrayList<NombreDeSyllabe> {
 
     protected TexteSonore texteSonore;
 
-    public OccurenceSonore(TexteSonore texteSonore) {
+    public ListeDeSyllabe(TexteSonore texteSonore) {
         this.texteSonore = texteSonore;
         this.initialiser();
     }
@@ -38,7 +38,7 @@ public class OccurenceSonore extends ArrayList<OccurenceSyllabe> {
     }
 
     /**
-     * Initialiser la liste de la classe courante avec une {@code OccurenceSyllabe}
+     * Initialiser la liste de la classe courante avec une {@code NombreDeSyllabe}
      */
     private void initialiser() {
 
@@ -47,14 +47,14 @@ public class OccurenceSonore extends ArrayList<OccurenceSyllabe> {
 
         for (SyllabeFrancais syllabe : listSyllabe) {
             nbOccurence = Collections.frequency(texteSonore,syllabe);
-            add(new OccurenceSyllabe(syllabe,nbOccurence));
+            add(new NombreDeSyllabe(syllabe,nbOccurence));
         }
     }
 
     /**
      * Enlever une syllabe de la liste
      *
-     * @param syllabeFrancais la syllabe a enlever
+     * @param syllabeFrancais la syllabe a enlever de la liste courante
      */
     public void reduire(SyllabeFrancais syllabeFrancais) {
         for(int i = 0 ; i < this.size() ; i++) {
@@ -63,8 +63,14 @@ public class OccurenceSonore extends ArrayList<OccurenceSyllabe> {
         }
     }
 
+    /**
+     * Retourner une chaine de caractére représentant tout les objects de la liste
+     * courante.
+     *
+     * @return Une chaine de caractére descriptibe de la liste courante.
+     */
     @Override
     public String toString() {
-        return stream().map(OccurenceSyllabe::toString).collect(Collectors.joining("."));
+        return stream().map(NombreDeSyllabe::toString).collect(Collectors.joining("."));
     }
 }

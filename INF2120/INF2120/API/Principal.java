@@ -65,29 +65,28 @@ public class Principal {
 
         TexteSonore texteSonore = new TexteSonore( nomFichier );
 
-        OccurenceSonore occurenceSonore = new OccurenceSonore(texteSonore);
+        /* Créer une liste contenant chaque syllabe ainsi que son nombre d'occurence
+        contenu dans le texteSonore
+        */
+        ListeDeSyllabe listeDeSyllabe = new ListeDeSyllabe(texteSonore);
 
-        ListePaireSyllabe listePaireSyllabe = new ListePaireSyllabe(occurenceSonore);
+        /*
+        Créer une liste de comparaison qui contiendra tout les couples de syllabes
+        diffents avec la distance entre eux.
+         */
+        ListeCoupleSyllabe listeCoupleSyllabe = new ListeCoupleSyllabe(listeDeSyllabe);
 
-        System.out.println(texteSonore.toString());
-        System.out.println(occurenceSonore.toString());
-        System.out.println(listePaireSyllabe.toString());
-        System.out.println("---------------------------");
+        while(nombreDeSyllabes < listeDeSyllabe.size()) {
 
-        while(nombreDeSyllabes < occurenceSonore.size()) {
+            //Remplacer la syllabe a supprimer dans le texte par celle qui prend ca place
+            texteSonore.remplacer(listeCoupleSyllabe.get(0).syllabeEnPlusPetitNombre(),
+                    listeCoupleSyllabe.get(0).syllabeEnPlusGrandNombre());
 
-            texteSonore.remplacer(listePaireSyllabe.get(0).syllabeEnPlusPetitNombre(),
-                    listePaireSyllabe.get(0).syllabeEnPlusGrandNombre());
+            //Supprimer la syllabe remplacée dans la liste des syllabes présente dans le texte
+            listeDeSyllabe.reduire(listeCoupleSyllabe.get(0).syllabeEnPlusPetitNombre());
 
-            occurenceSonore.reduire(listePaireSyllabe.get(0).syllabeEnPlusPetitNombre());
-
-            listePaireSyllabe.reduire();
-
-            System.out.println(texteSonore.toString());
-            System.out.println(occurenceSonore.toString());
-            System.out.println(listePaireSyllabe.toString());
-            System.out.println("---------------------------");
-
+            //Supprimer tous les couples fesant reference a la syllabe supprimée
+            listeCoupleSyllabe.reduire();
         }
 
         // cette partie du code affiche les résultats, modifier au besoin.

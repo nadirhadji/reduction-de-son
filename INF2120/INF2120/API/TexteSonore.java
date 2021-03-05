@@ -7,7 +7,6 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-
 /**
  * Une classe pour contenir une suite de syllabe.
  *

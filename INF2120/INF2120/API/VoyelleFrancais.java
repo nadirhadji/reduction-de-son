@@ -164,6 +164,13 @@ public class VoyelleFrancais {
                 : new VoyelleFrancais( voyelle, voyelle2, estNasal );
     }
 
+    /**
+     * Retourne vrai si l'objet passé en argument est équivalent a l'object courant
+     * Représente une surcharge de la méthode equals.
+     *
+     * @param o L'objet a comparer avec l'objet courant
+     * @return un boolean qui indique si l'objet en argument est egale a l'objet courant.
+     */
     @Override
     public boolean equals(Object o) {
         boolean resultat = false;
@@ -184,7 +191,6 @@ public class VoyelleFrancais {
 
         return resultat;
     }
-
 
     /**
      * retourne une chaîne de caractère composée des voyelles du groupe.

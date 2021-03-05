@@ -173,6 +173,13 @@ public class SyllabeFrancais {
         return resultat;
     }
 
+    /**
+     * Retourne vrai si l'objet passé en argument est équivalent a l'object courant
+     * Représente une surcharge de la méthode equals.
+     *
+     * @param o L'objet a comparer avec l'objet courant
+     * @return un boolean qui indique si l'objet en argument est egale a l'objet courant.
+     */
     @Override
     public boolean equals(Object o) {
 
